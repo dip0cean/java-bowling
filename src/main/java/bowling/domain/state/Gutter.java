@@ -8,7 +8,7 @@ public class Gutter extends State {
 
     @Override
     public String symbol() {
-        return "-";
+        return "-|-";
     }
 
     @Override
