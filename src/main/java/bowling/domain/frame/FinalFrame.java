@@ -3,7 +3,8 @@ package bowling.domain.frame;
 import bowling.domain.frame.exception.UnableBowlingException;
 import bowling.domain.frame.exception.UnableCreateFrameException;
 import bowling.domain.score.Score;
-import bowling.domain.state.*;
+import bowling.domain.state.Ready;
+import bowling.domain.state.State;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -33,7 +34,7 @@ public class FinalFrame implements Frame {
         }
 
         count.incrementAndGet();
-        if (this.state.is(Strike.class) || this.state.is(Spare.class) || this.state.is(Bonus.class)) {
+        if (this.state.isStrike() || this.state.isSpare() || this.state.isBonus()) {
             this.state = this.state.bonusBowling(pins);
             return this;
         }
@@ -64,9 +65,9 @@ public class FinalFrame implements Frame {
 
     @Override
     public boolean isFinishBowling() {
-        return this.state.is(Miss.class)
-                || this.state.is(Gutter.class)
-                || (this.count.get() == LIMIT_COUNT && this.state.is(Bonus.class));
+        return this.state.isMiss()
+                || this.state.isGutter()
+                || (this.count.get() == LIMIT_COUNT && this.state.isBonus());
     }
 
     @Override

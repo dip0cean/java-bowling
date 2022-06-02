@@ -1,7 +1,8 @@
 package bowling.domain.frame;
 
 import bowling.domain.score.Score;
-import bowling.domain.state.*;
+import bowling.domain.state.Ready;
+import bowling.domain.state.State;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -56,19 +57,19 @@ public class NormalFrame implements Frame {
 
     @Override
     public boolean isFinishBowling() {
-        return this.state.is(Strike.class)
-                || this.state.is(Spare.class)
-                || this.state.is(Miss.class)
-                || this.state.is(Gutter.class);
+        return this.state.isStrike()
+                || this.state.isSpare()
+                || this.state.isMiss()
+                || this.state.isGutter();
     }
 
     @Override
     public boolean isPrinting() {
-        if (this.state.is(Spare.class) && !this.nextFrame.isFinishBowling()) {
-            return this.nextFrame.state().is(FirstPitch.class);
+        if (this.state.isSpare() && !this.nextFrame.isFinishBowling()) {
+            return this.nextFrame.state().isFirstPitch();
         }
 
-        if (this.state.is(Strike.class) || this.state.is(Spare.class)) {
+        if (this.state.isStrike() || this.state.isSpare()) {
             return this.isFinishBowling() && this.nextFrame.isFinishBowling();
         }
 

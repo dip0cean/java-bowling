@@ -17,6 +17,11 @@ public class Gutter extends State {
     }
 
     @Override
+    public boolean isGutter() {
+        return true;
+    }
+
+    @Override
     public Score calculateScore(Score before) {
         return new Score(ZERO, before);
     }

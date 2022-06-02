@@ -26,6 +26,11 @@ public class FirstPitch extends State {
     }
 
     @Override
+    public boolean isFirstPitch() {
+        return true;
+    }
+
+    @Override
     public Score calculateScore(Score before) {
         return before.nextScore(this.totalScore());
     }

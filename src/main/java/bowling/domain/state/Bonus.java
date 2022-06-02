@@ -38,8 +38,13 @@ public class Bonus extends State {
     }
 
     @Override
+    public boolean isBonus() {
+        return true;
+    }
+
+    @Override
     public Score calculateScore(Score before) {
-        if (this.state.is(Bonus.class)) {
+        if (this.state.isBonus()) {
             return calculateScoreByBonus(before);
         }
 

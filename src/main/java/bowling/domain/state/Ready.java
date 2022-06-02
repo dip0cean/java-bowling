@@ -23,6 +23,11 @@ public class Ready extends State {
     }
 
     @Override
+    public boolean isReady() {
+        return true;
+    }
+
+    @Override
     public Score calculateScore(Score before) {
         return new Score(ZERO, before);
     }

@@ -26,6 +26,11 @@ public class Spare extends State {
     }
 
     @Override
+    public boolean isSpare() {
+        return true;
+    }
+
+    @Override
     public Score calculateScore(Score before) {
         Score after = before.nextScore(this.firstPitch.pins());
 

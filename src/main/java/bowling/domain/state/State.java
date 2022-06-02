@@ -15,15 +15,39 @@ public abstract class State {
 
     public abstract Score calculateScore(Score before);
 
+    public boolean isReady() {
+        return false;
+    }
+
+    public boolean isFirstPitch() {
+        return false;
+    }
+
+    public boolean isGutter() {
+        return false;
+    }
+
+    public boolean isMiss() {
+        return false;
+    }
+
+    public boolean isSpare() {
+        return false;
+    }
+
+    public boolean isStrike() {
+        return false;
+    }
+
+    public boolean isBonus() {
+        return false;
+    }
+
     public Score createScore() {
         return new Score(ZERO, this.totalScore());
     }
 
     public State bonusBowling(int pins) {
         throw new BonusBowlingException();
-    }
-
-    public <T extends State> boolean is(Class<T> clazz) {
-        return this.getClass().isAssignableFrom(clazz);
     }
 }
