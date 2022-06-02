@@ -38,7 +38,7 @@ public class ReadyTest {
         Score currentScore = new Ready().calculateScore(strikeScore);
 
         assertAll(() -> assertThat(currentScore.getScore()).isEqualTo(10),
-                () -> assertThat(currentScore.left()).isEqualTo(0));
+                () -> assertThat(currentScore.left()).isZero());
     }
 
     @Test
