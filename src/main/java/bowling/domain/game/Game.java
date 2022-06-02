@@ -39,7 +39,7 @@ public class Game {
         Frame currentFrame = this.frames.currentFrame();
         int round = currentFrame.round();
 
-        if (currentFrame.isFinishBowling() || currentFrame.isFinalFrame()) {
+        if (currentFrame.isFinishBowling() && !currentFrame.isFinalFrame()) {
             ++round;
         }
 

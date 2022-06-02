@@ -9,20 +9,21 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class FinalFrame implements Frame {
 
-    private static final int FINAL_ROUND = 9;
     private static final int LIMIT_COUNT = 2;
     private static final int MINIMUM_COUNT = 0;
 
+    private final int round;
     private final AtomicInteger count;
     private State state;
 
-    private FinalFrame(int pins) {
+    private FinalFrame(int round, int pins) {
+        this.round = round;
         this.count = new AtomicInteger();
         this.state = Ready.of(pins);
     }
 
-    protected static FinalFrame lastBowling(int pins) {
-        return new FinalFrame(pins);
+    protected static FinalFrame lastBowling(int round, int pins) {
+        return new FinalFrame(round, pins);
     }
 
     @Override
@@ -53,7 +54,7 @@ public class FinalFrame implements Frame {
 
     @Override
     public int round() {
-        return FINAL_ROUND;
+        return this.round;
     }
 
     @Override

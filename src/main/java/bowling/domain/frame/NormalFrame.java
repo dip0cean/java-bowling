@@ -32,13 +32,14 @@ public class NormalFrame implements Frame {
 
     @Override
     public Frame next(int pins) {
+        int nextRound = new AtomicInteger(this.round).incrementAndGet();
         if (this.round == SEMI_FINAL_INDEX) {
-            this.nextFrame = FinalFrame.lastBowling(pins);
+            this.nextFrame = FinalFrame.lastBowling(nextRound, pins);
 
             return this.nextFrame;
         }
 
-        this.nextFrame = bowling(new AtomicInteger(this.round).incrementAndGet(), pins);
+        this.nextFrame = bowling(nextRound, pins);
 
         return this.nextFrame;
     }
