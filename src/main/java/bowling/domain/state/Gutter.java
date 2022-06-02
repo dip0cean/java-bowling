@@ -22,6 +22,11 @@ public class Gutter extends State {
     }
 
     @Override
+    public boolean isFinishBowling() {
+        return true;
+    }
+
+    @Override
     public Score calculateScore(Score before) {
         return new Score(ZERO, before);
     }

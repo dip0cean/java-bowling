@@ -29,6 +29,11 @@ public class Miss extends State {
     }
 
     @Override
+    public boolean isFinishBowling() {
+        return true;
+    }
+
+    @Override
     public Score calculateScore(Score before) {
         Score after = before.nextScore(this.firstPitch.pins());
 

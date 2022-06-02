@@ -57,10 +57,7 @@ public class NormalFrame implements Frame {
 
     @Override
     public boolean isFinishBowling() {
-        return this.state.isStrike()
-                || this.state.isSpare()
-                || this.state.isMiss()
-                || this.state.isGutter();
+        return this.state.isFinishBowling();
     }
 
     @Override

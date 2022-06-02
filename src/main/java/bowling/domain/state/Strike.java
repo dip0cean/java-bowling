@@ -29,6 +29,11 @@ public class Strike extends State {
     }
 
     @Override
+    public boolean isFinishBowling() {
+        return true;
+    }
+
+    @Override
     public Score calculateScore(Score before) {
         return before.nextScore(this.totalScore());
     }

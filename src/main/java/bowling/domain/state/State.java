@@ -43,6 +43,10 @@ public abstract class State {
         return false;
     }
 
+    public boolean isFinishBowling() {
+        return false;
+    }
+
     public Score createScore() {
         return new Score(ZERO, this.totalScore());
     }
